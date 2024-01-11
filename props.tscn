@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhpwfibnjryey"]
+
+[ext_resource type="Texture2D" uid="uid://dgvql71gs4i7" path="res://BULLIT.jpg" id="1_1ju10"]
+[ext_resource type="PackedScene" uid="uid://l7ccxbvnl3j" path="res://Cube.tscn" id="2_tjoa1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_og4a1"]
+albedo_texture = ExtResource("1_1ju10")
+uv1_triplanar = true
+
+[node name="Props" type="Node3D"]
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -4.3)
+use_collision = true
+collision_layer = 8
+size = Vector3(8, 1, 0.8)
+material = SubResource("StandardMaterial3D_og4a1")
+
+[node name="Cube" parent="." instance=ExtResource("2_tjoa1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83233, 0.492094, 0)

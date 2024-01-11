@@ -1,0 +1,84 @@
+[gd_scene load_steps=10 format=3 uid="uid://bsgcvnu6pmbha"]
+
+[ext_resource type="Script" path="res://level_1.gd" id="1_bry25"]
+[ext_resource type="PackedScene" uid="uid://dhpwfibnjryey" path="res://props.tscn" id="1_u8hpm"]
+[ext_resource type="PackedScene" uid="uid://b26ept05j88ly" path="res://small house.glb" id="2_v35eh"]
+[ext_resource type="PackedScene" uid="uid://d34qe57nkoq6b" path="res://ball.tscn" id="4_p28fo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_efnfn"]
+albedo_color = Color(0.521569, 0.219608, 0.207843, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7bu3m"]
+albedo_color = Color(0, 0.54902, 0.54902, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gd6iq"]
+sky_top_color = Color(0.478431, 0.815686, 0.94902, 1)
+sky_horizon_color = Color(0.823529, 0.945098, 1, 1)
+ground_bottom_color = Color(0.101961, 0.2, 0.121569, 1)
+ground_horizon_color = Color(0.411765, 0.713726, 0.733333, 1)
+sun_curve = 0.126134
+
+[sub_resource type="Sky" id="Sky_ktfvk"]
+sky_material = SubResource("ProceduralSkyMaterial_gd6iq")
+
+[sub_resource type="Environment" id="Environment_s6jkh"]
+background_mode = 2
+sky = SubResource("Sky_ktfvk")
+
+[node name="Level 1" type="Node3D"]
+script = ExtResource("1_bry25")
+
+[node name="Props" parent="." instance=ExtResource("1_u8hpm")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 2.2, 0, -1.3)
+
+[node name="Architecture" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="Floor" type="CSGBox3D" parent="Architecture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+size = Vector3(20, 0.1, 20)
+
+[node name="Wall1" type="CSGBox3D" parent="Architecture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, -10)
+size = Vector3(20, 1.2, 0.1)
+material = SubResource("StandardMaterial3D_efnfn")
+
+[node name="Wall2" type="CSGBox3D" parent="Architecture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 10)
+size = Vector3(20, 1.2, 0.1)
+material = SubResource("StandardMaterial3D_efnfn")
+
+[node name="Wall3" type="CSGBox3D" parent="Architecture"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.9, 0.6, 2.23517e-08)
+size = Vector3(20, 1.2, 0.1)
+material = SubResource("StandardMaterial3D_7bu3m")
+
+[node name="Wall4" type="CSGBox3D" parent="Architecture"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.9, 0.6, 2.23517e-08)
+size = Vector3(20, 1.2, 0.1)
+material = SubResource("StandardMaterial3D_7bu3m")
+
+[node name="small house" parent="." instance=ExtResource("2_v35eh")]
+transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, -6, 0, 6.7)
+
+[node name="ButtonSignal" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -44.0
+offset_top = -40.0
+offset_right = 44.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Signal"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_s6jkh")
+
+[node name="Ball" parent="." instance=ExtResource("4_p28fo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.794353, 2.96815, -3.00748)
+mass = 2.0
+
+[connection signal="pressed" from="ButtonSignal" to="." method="_on_button_signal_pressed"]

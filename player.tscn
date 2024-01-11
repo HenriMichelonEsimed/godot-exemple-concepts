@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://i28toum7fe3q"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_jtunu"]
+[ext_resource type="PackedScene" uid="uid://dboialknk0g54" path="res://casual_male/casual_male.tscn" id="2_11533"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xn4aw"]
+size = Vector3(1.3, 2, 2.20459)
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera")]
+collision_mask = 9
+script = ExtResource("1_jtunu")
+camera = NodePath("Camera3D")
+
+[node name="Character" parent="." instance=ExtResource("2_11533")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.994456, 0.105153, 0, -0.105153, 0.994456, 0.732478, 2.31997, 3.38269)
+fov = 54.4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.064611, 0.992265, -0.292236)
+shape = SubResource("BoxShape3D_xn4aw")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+target_position = Vector3(0, 0, -10)
+collision_mask = 12

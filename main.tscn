@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://oidvlhmm41x8"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_er7ib"]
+[ext_resource type="PackedScene" uid="uid://i28toum7fe3q" path="res://player.tscn" id="1_n3yl4"]
+[ext_resource type="Shader" path="res://bw.gdshader" id="3_83svn"]
+[ext_resource type="Texture2D" uid="uid://dhpru470lkbh8" path="res://white.png" id="4_5ko3r"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w55ce"]
+shader = ExtResource("3_83svn")
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_er7ib")
+
+[node name="Game" type="Node3D" parent="."]
+
+[node name="Player" parent="Game" instance=ExtResource("1_n3yl4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.60463)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Game"]
+transform = Transform3D(1, 0, 0, 0, -0.90187, 0.432007, 0, -0.432007, -0.90187, -39.6543, 18.7897, -19.6608)
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LabelScore" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -65.0
+offset_bottom = 26.0
+grow_horizontal = 0
+text = "Score : 0"
+
+[node name="ButtonQuit" type="Button" parent="UI"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Quit"
+
+[node name="BWEffect" type="TextureRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_w55ce")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_5ko3r")
+
+[connection signal="pressed" from="UI/ButtonQuit" to="." method="_on_button_quit_pressed"]
