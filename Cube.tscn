@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://l7ccxbvnl3j"]
 
-[ext_resource type="Shader" path="res://gradient.gdshader" id="1_vpq2t"]
+[ext_resource type="Shader" uid="uid://br1pvu6ydsiik" path="res://gradient.gdshader" id="1_vpq2t"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g0yau"]
 render_priority = 0
@@ -64,8 +64,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n26l5"]
 _data = {
-"RESET": SubResource("Animation_uaf1f"),
-"default": SubResource("Animation_j6vs2")
+&"RESET": SubResource("Animation_uaf1f"),
+&"default": SubResource("Animation_j6vs2")
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mdqyg"]

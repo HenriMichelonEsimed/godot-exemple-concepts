@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://i28toum7fe3q"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_jtunu"]
+[ext_resource type="Script" uid="uid://cndlyqoiw1jjv" path="res://player.gd" id="1_jtunu"]
 [ext_resource type="PackedScene" uid="uid://dboialknk0g54" path="res://casual_male/casual_male.tscn" id="2_11533"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xn4aw"]

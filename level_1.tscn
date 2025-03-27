@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bsgcvnu6pmbha"]
 
-[ext_resource type="Script" path="res://level_1.gd" id="1_bry25"]
+[ext_resource type="Script" uid="uid://bgimy5ncul1nq" path="res://level_1.gd" id="1_bry25"]
 [ext_resource type="PackedScene" uid="uid://dhpwfibnjryey" path="res://props.tscn" id="1_u8hpm"]
 [ext_resource type="PackedScene" uid="uid://b26ept05j88ly" path="res://small house.glb" id="2_v35eh"]
 [ext_resource type="PackedScene" uid="uid://d34qe57nkoq6b" path="res://ball.tscn" id="4_p28fo"]
